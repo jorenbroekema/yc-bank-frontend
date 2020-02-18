@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - master
+name: Publish Website
+jobs:
+  FTP-Deploy-Action:
+    name: FTP-Deploy-Action
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        fetch-depth: 2
+
+    - name: Use Node.js 12.x
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Build Project
+      run: |
+        npm install
+        npm run build --if-present
+
+    - name: List output files
+      run: ls
+
+    - name: FTP-Deploy-Action
+      uses: SamKirkland/FTP-Deploy-Action@4895f6f2511078ac7385f855d92b00e2f2ce4088
+      with:
+        ftp-server: ftp://ftp.samkirkland.com/
+        ftp-username: myFtpUserName
+        ftp-password: ${{ secrets.FTP_PASSWORD }}
+        git-ftp-args: --dry-run
+        local-dir: dist
