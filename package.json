@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@open-wc/building-rollup": "^0.15.1",
+    "@open-wc/building-rollup": "^0.16.0",
     "es-dev-server": "^1.40.0",
     "rimraf": "^2.6.3",
     "rollup": "^1.15.4",
