@@ -1,0 +1,24 @@
+{
+  "name": "yc-bank-frontend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "es-dev-server --node-resolve --watch --open",
+    "start:build": "cd dist && es-dev-server --open",
+    "build": "rimraf dist && rollup -c rollup.config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@open-wc/building-rollup": "^0.15.1",
+    "es-dev-server": "^1.40.0",
+    "rimraf": "^2.6.3",
+    "rollup": "^1.15.4",
+    "rollup-plugin-copy": "^3.3.0"
+  },
+  "dependencies": {
+    "lit-element": "^2.2.1"
+  }
+}
