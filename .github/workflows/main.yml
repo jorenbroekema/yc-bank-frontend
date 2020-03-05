@@ -25,11 +25,14 @@ jobs:
     - name: List output files
       run: ls
 
+    - name: List dist files
+      run: cd dist && ls
+
     - name: FTP-Deploy-Action
-      uses: SamKirkland/FTP-Deploy-Action@4895f6f2511078ac7385f855d92b00e2f2ce4088
+      uses: SamKirkland/FTP-Deploy-Action@3.0.0
       with:
-        ftp-server: ftp://ftp.samkirkland.com/
-        ftp-username: myFtpUserName
+        ftp-server: sftp://188.166.61.51
+        ftp-username: joren
         ftp-password: ${{ secrets.FTP_PASSWORD }}
-        git-ftp-args: --dry-run
+        git-ftp-args: --insecure --remote-root home/joren/yc-bank-frontend
         local-dir: dist
